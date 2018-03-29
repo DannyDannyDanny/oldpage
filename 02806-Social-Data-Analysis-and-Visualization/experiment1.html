@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>DannyDannyDanny</title>
+  <script type="text/javascript" src="../d3/d3.js"></script>
+
+</head>
+
+<body>
+  <h1 id=heading>This is experiment 1</h1>
+  <p id='description'>everything is normal</p>
+
+  <script type="text/javascript">
+    d3.selectAll("p").selectAll("colorful").style("color", function() {
+      return "hsl(" + Math.random() * 180 + ",100%,50%)";
+    });
+  </script>
+
+  <div>
+    <h4 id='time'>time goes here</h4>
+  </div>
+
+  <script>
+    var update_loop = setInterval(w_h, 1000);
+
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var esketit = false;
+    var imgurl = "https://68.media.tumblr.com/79b54d5e63607dfc1c63789fc9937f99/tumblr_olwiz7slra1r1zmcwo1_1280.jpg";
+
+
+    w_h();
+
+    function w_h() {
+      var time = new Date();
+
+      function twoDigit(i) {
+        return i < 10 ? "0" + i : i;
+      }
+
+      var timeHMS = twoDigit(time.getHours());
+      timeHMS += ':' + twoDigit(time.getMinutes());
+      timeHMS += ':' + twoDigit(time.getSeconds());
+      document.getElementById('time').innerHTML = timeHMS
+    }
+
+    function funcOne() {
+      if (esketit) {
+        document.getElementById("description").innerHTML = "normal Mode";
+        document.getElementById("start-button").innerHTML = "turn down for what";
+        document.getElementById("image").src = "";
+        var heading = document.getElementById("heading");
+        heading.style.color = "navy";
+      } else {
+        // Change paragraph text
+        document.getElementById("description").innerHTML = "fire mode";
+        // Change button text
+        document.getElementById("start-button").innerHTML = "esketit";
+        // Add image
+        document.getElementById("image").src = imgurl;
+        // Pop up alert
+        var message = "you are about to esketit";
+        //window.alert(message);
+        var heading = document.getElementById("heading");
+        heading.style.color = "red";
+      }
+      esketit = !esketit
+    }
+
+    function funcTwo() {
+      document.getElementById("info-header").innerHTML = "info i could find:"
+      var startlist = "<ul><li>"
+      var nextpoint = "</li><li>"
+      var endlist = "</li></ul>"
+      var content = startlist + "height: " + h + nextpoint + "width: " + w + endlist
+      document.getElementById('content').innerHTML = content
+    }
+  </script>
+
+  <div>
+    <button id="start-button" type="button" onclick="funcOne()">get it</button>
+    <button id="info-button" type="button" onclick="funcTwo()">info</button>
+  </div>
+
+  <div>
+    <img id="image" src="">
+  </div>
+
+  <div>
+    <h3 id='info-header'></h3>
+    <div id='content'></div>
+  </div>
+
+</html>

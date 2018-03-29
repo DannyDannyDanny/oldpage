@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>week 2</title>
+    <script type="text/javascript" src="/d3/d3.js"></script>
+
+    <style type="text/css">
+      div.bar {
+        display: inline-block;
+        width: 20px;
+        height: 75px; /*will be overridden*/
+        background-color: teal;
+        margin-right: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--script type="text/javascript" src="drawdivs.js"></script-->
+    <div id="top">
+      <a href=/index.html>home</a>
+      <h1 id="heading">No JS executed</h1>
+      <p id="p1">no additional text</p>
+    </div>
+
+    <!-- draw with divs-->
+    <div>
+      <div id="divsbarchart">divs bar chart</div>
+
+      <!--draw divs-->
+      <script type="text/javascript">
+        //var dataset = [1,2,3,5,6,34,12,53,2,12,8,3,4]
+        var dataset = genRandomInts(15,20)
+        // generates a 'length' long list of integers between 0-max
+        function genRandomInts(length, max){
+          randomData = []
+          for(var i = 0; i < length; i++){
+            var newNumber = Math.floor(Math.random() * max);
+            randomData.push(newNumber);
+          }
+          return randomData
+        }
+        d3.select("body").selectAll("div")
+        .select("divsbarchart")
+        .data(dataset)
+        .enter()
+        .append("div")
+        .attr("class", "bar")
+        .style("height",function(d){
+          var barheight = d * 3;
+          return barheight + "px"
+        });
+      </script>
+    </div>
+
+    <!--draw with svgs-->
+    <div>
+      <div id="svgdraw">svg</div>
+
+      <!--draw svg-->
+      <script type="text/javascript">
+        var w = 500;
+        var h = 50;
+
+        function genRandomInts(length, max){
+          randomData = []
+          for(var i = 0; i < length; i++){
+            var newNumber = Math.floor(Math.random() * max);
+            randomData.push(newNumber);
+          }
+          return randomData
+        }
+
+        var dataset = genRandomInts(5,30)
+
+        var svg = d3.select("body").selectAll("div")
+        .select("svgdraw")
+        .append("svg")
+        .attr("width",w)
+        .attr("height",h);
+
+        var circles = svg.selectAll("circle")
+        .data(dataset)
+        .enter()
+        .append("circle")
+        /*svg.selectAll("circle")
+          .data(dataset)
+          .enter()
+          .append("circle");*/
+      </script>
+    </div>
+
+  </body>
+</html>

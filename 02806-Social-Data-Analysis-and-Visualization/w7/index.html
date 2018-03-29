@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Zooming the map with buttons!</title>
+		<script type="text/javascript" src="../../d3/d3.js"></script>
+		<style type="text/css">
+
+			.pan rect,
+			.zoom rect {
+				fill: black;
+				opacity: 0.2;
+			}
+
+			.zoom rect {
+				rx: 5;  /* Rounded corners */
+				ry: 5;
+			}
+
+			.pan text,
+			.zoom text {
+				fill: black;
+				font-size: 18px;
+				text-anchor: middle;
+			}
+
+			.pan:hover rect,
+ 			.pan:hover text,
+			.zoom:hover rect,
+ 			.zoom:hover text {
+				fill: blue;
+			}
+
+		</style>
+	</head>
+	<body>
+    <h1>Week 7 - This map thing is lit</h1>
+    <p>
+      <a href="..">Home</a>
+
+    </p>
+		<script type="text/javascript" src="map.js"></script>
+	</body>
+</html>
